@@ -8,15 +8,15 @@ Deployment is automated by [GitHub Actions](https://github.com/simbleau/resume/a
 - Pushes to `main` trigger a new release of the [latest résumé, cv, and cover letter](https://github.com/simbleau/resume/releases/tag/latest), available in several formats.
   | Artifact               | Link                                                                          | Mirror                                         |
   | ---------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------- |
-  | Résumé                 | <https://simbleau.github.io/resume/resume.html>                               | <https://simbleau.github.io/resume/>           |
-  | Résumé, Embedded       | <https://simbleau.github.io/resume/resume-embed.html>                         | <https://simbleau.github.io/resume/embed.html> |
-  | Résumé, Download       | <https://github.com/simbleau/resume/releases/download/latest/resume.pdf>      |                                                |
-  | CV                     | <https://simbleau.github.io/resume/cv.html>                                   |                                                |
-  | CV, Embedded           | <https://simbleau.github.io/resume/cv-embed.html>                             |                                                |
-  | CV, Download           | <https://github.com/simbleau/resume/releases/download/latest/cv.pdf>          |                                                |
-  | Cover letter           | <https://simbleau.github.io/resume/coverletter.html>                          |                                                |
-  | Cover letter, Embedded | <https://simbleau.github.io/resume/coverletter-embed.html>                    |                                                |
-  | Cover letter, Download | <https://github.com/simbleau/resume/releases/download/latest/coverletter.pdf> |                                                |
+  | Résumé                 | <https://seabassjh.github.io/resume/resume.html>                               | <https://seabassjh.github.io/resume/>           |
+  | Résumé, Embedded       | <https://seabassjh.github.io/resume/resume-embed.html>                         | <https://seabassjh.github.io/resume/embed.html> |
+  | Résumé, Download       | <https://github.com/seabassjh/resume/releases/download/latest/resume.pdf>      |                                                |
+  | CV                     | <https://seabassjh.github.io/resume/cv.html>                                   |                                                |
+  | CV, Embedded           | <https://seabassjh.github.io/resume/cv-embed.html>                             |                                                |
+  | CV, Download           | <https://github.com/seabassjh/resume/releases/download/latest/cv.pdf>          |                                                |
+  | Cover letter           | <https://seabassjh.github.io/resume/coverletter.html>                          |                                                |
+  | Cover letter, Embedded | <https://seabassjh.github.io/resume/coverletter-embed.html>                    |                                                |
+  | Cover letter, Download | <https://github.com/seabassjh/resume/releases/download/latest/coverletter.pdf> |                                                |
 - Manually pushed [releases](https://github.com/simbleau/resume/releases) also trigger workflows to upload artifacts.
 
 # 🔧 Building
