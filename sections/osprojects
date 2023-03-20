@@ -1,0 +1,15 @@
+% ---------
+% Open-source Projects
+% ---------
+\section{Osprojects}
+\mySubHeadingListStart
+
+  \mySubHeading
+    {Bachelor of Science, Computer Science \& Engineering}{Class of 2021}
+    {University of Toledo, ABET Accredited}{Toledo, OH, USA}
+    \myItemListStart
+      \myItem{Summa Cum Laude}
+      \myItem{3.97 GPA}
+    \myItemListEnd
+
+\mySubHeadingListEnd
