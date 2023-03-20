@@ -1,0 +1,101 @@
+name: Release on GitHub Pages
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v3
+
+      - name: Build | Résumé
+        uses: xu-cheng/latex-action@v2
+        with:
+          latexmk_shell_escape: true
+          latexmk_use_xelatex: true
+          root_file: ./resume.tex
+
+      - name: Build | Cirriculum Vitae
+        uses: xu-cheng/latex-action@v2
+        with:
+          latexmk_shell_escape: true
+          latexmk_use_xelatex: true
+          root_file: ./cv.tex
+
+      - name: Build | Cover letter
+        uses: xu-cheng/latex-action@v2
+        with:
+          latexmk_shell_escape: true
+          latexmk_use_xelatex: true
+          root_file: ./coverletter.tex
+
+      - name: Stage | PDFs
+        run: |
+          mkdir pub/
+          mv resume.pdf pub/
+          mv cv.pdf pub/
+          mv coverletter.pdf pub/
+
+      - name: Stage | Index
+        uses: cuchi/jinja2-action@v1.2.1
+        with:
+          template: ./templates/index.html.j2
+          output_file: pub/index.html
+          variables: PDF=resume.pdf
+
+      - name: Stage | Embed
+        uses: cuchi/jinja2-action@v1.2.1
+        with:
+          template: ./templates/embed.html.j2
+          output_file: pub/embed.html
+          variables: PDF=resume.pdf
+
+      - name: Stage | Résumé
+        uses: cuchi/jinja2-action@v1.2.1
+        with:
+          template: ./templates/index.html.j2
+          output_file: pub/resume.html
+          variables: PDF=resume.pdf
+
+      - name: Stage | Résumé, Embed
+        uses: cuchi/jinja2-action@v1.2.1
+        with:
+          template: ./templates/embed.html.j2
+          output_file: pub/resume-embed.html
+          variables: PDF=resume.pdf
+
+      - name: Stage | CV
+        uses: cuchi/jinja2-action@v1.2.1
+        with:
+          template: ./templates/index.html.j2
+          output_file: pub/cv.html
+          variables: PDF=cv.pdf
+
+      - name: Stage | CV, Embed
+        uses: cuchi/jinja2-action@v1.2.1
+        with:
+          template: ./templates/embed.html.j2
+          output_file: pub/cv-embed.html
+          variables: PDF=cv.pdf
+
+      - name: Stage | Cover letter
+        uses: cuchi/jinja2-action@v1.2.1
+        with:
+          template: ./templates/index.html.j2
+          output_file: pub/coverletter.html
+          variables: PDF=coverletter.pdf
+
+      - name: Stage | Cover letter, Embed
+        uses: cuchi/jinja2-action@v1.2.1
+        with:
+          template: ./templates/embed.html.j2
+          output_file: pub/coverletter-embed.html
+          variables: PDF=coverletter.pdf
+
+      - name: Deploy, Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: pub/

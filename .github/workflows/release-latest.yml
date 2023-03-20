@@ -1,0 +1,55 @@
+name: Release Latest
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v3
+
+      - name: Build | Résumé
+        uses: xu-cheng/latex-action@v2
+        with:
+          latexmk_shell_escape: true
+          latexmk_use_xelatex: true
+          root_file: ./resume.tex
+
+      - name: Build | Cirriculum Vitae
+        uses: xu-cheng/latex-action@v2
+        with:
+          latexmk_shell_escape: true
+          latexmk_use_xelatex: true
+          root_file: ./cv.tex
+
+      - name: Build | Cover letter
+        uses: xu-cheng/latex-action@v2
+        with:
+          latexmk_shell_escape: true
+          latexmk_use_xelatex: true
+          root_file: ./coverletter.tex
+
+      # Replace latest release
+      - name: Clean | Latest
+        uses: dev-drprasad/delete-tag-and-release@v0.2.1
+        with:
+          delete_release: true
+          tag_name: latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push | Latest
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest
+          name: Résumé, CV
+          body: "The latest résumé and cirriculum vitae of Spencer C. Imbleau."
+          draft: false
+          prerelease: false
+          fail_on_unmatched_files: true
+          files: |
+            resume.pdf
+            cv.pdf
+            coverletter.pdf
