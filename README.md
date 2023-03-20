@@ -1,6 +1,4 @@
-# 📋 Résumé + CV + Coverletter
-A repository containing the LaTeX source of Spencer Imbleau's résumé, curriculum vitae, and coverletter matter. Tested and deployed with GitHub Actions.
-
+# 📋 Resume
 ---
 [![résumé last release](https://img.shields.io/github/release-date/simbleau/resume?logo=github&label=Last%20Release)](https://github.com/simbleau/resume/releases)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/simbleau/resume/ci.yml?logo=github&label=CI)](https://github.com/simbleau/resume/actions/workflows/ci.yml)
@@ -51,6 +49,3 @@ Deployment is automated by [GitHub Actions](https://github.com/simbleau/resume/a
   ```bash
   make open
   ```
-
-# 🔏 License
-This project is [MIT](./LICENSE) licensed. You are within your rights to fork my résumé and use it as your own, although you should probably change my name to yours!
