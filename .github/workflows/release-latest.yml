@@ -31,7 +31,7 @@ jobs:
         with:
           tag_name: latest
           name: Résumé, CV
-          body: "The latest résumé and cirriculum vitae of Spencer C. Imbleau."
+          body: "The latest résumé and cirriculum vitae of Sebastian J. Hamel."
           draft: false
           prerelease: false
           fail_on_unmatched_files: true
