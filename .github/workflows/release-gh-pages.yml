@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup | Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build | Résumé
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           latexmk_shell_escape: true
           latexmk_use_xelatex: true
@@ -33,32 +33,20 @@ jobs:
           j2 --version
 
       - name: Stage | Index
-        uses: cuchi/jinja2-action@v1.2.1
-        with:
-          template: ./templates/index.html.j2
-          output_file: pub/index.html
-          variables: PDF=resume.pdf
+        run: |
+          PDF='resume.pdf' j2 templates/index.html.j2 > pub/index.html
 
       - name: Stage | Embed
-        uses: cuchi/jinja2-action@v1.2.1
-        with:
-          template: ./templates/embed.html.j2
-          output_file: pub/embed.html
-          variables: PDF=resume.pdf
+        run: |
+          PDF='resume.pdf' j2 templates/embed.html.j2 > pub/embed.html
 
       - name: Stage | Résumé
-        uses: cuchi/jinja2-action@v1.2.1
-        with:
-          template: ./templates/index.html.j2
-          output_file: pub/resume.html
-          variables: PDF=resume.pdf
+        run: |
+          PDF='resume.pdf' j2 templates/index.html.j2 > pub/resume.html
 
       - name: Stage | Résumé, Embed
-        uses: cuchi/jinja2-action@v1.2.1
-        with:
-          template: ./templates/embed.html.j2
-          output_file: pub/resume-embed.html
-          variables: PDF=resume.pdf
+        run: |
+          PDF='resume.pdf' j2 templates/embed.html.j2 > pub/resume-embed.html
 
       - name: Deploy, Github Pages
         uses: peaceiris/actions-gh-pages@v3
