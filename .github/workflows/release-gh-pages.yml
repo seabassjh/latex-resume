@@ -22,6 +22,16 @@ jobs:
           mkdir pub/
           mv resume.pdf pub/
 
+      - name: Setup | Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Setup | j2cli
+        run: |
+          pip3 install --user --upgrade j2cli
+          j2 --version
+
       - name: Stage | Index
         uses: cuchi/jinja2-action@v1.2.1
         with:
